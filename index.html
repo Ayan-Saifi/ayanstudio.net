@@ -1,0 +1,2333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayan Studio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    :root{
+    
+    --bg:#ffffff;
+    --bg2:#f8fafc;
+    --text:#111827;
+    --card:rgba(255,255,255,.75);
+    --border:rgba(0,0,0,.08);
+    --nav:rgba(255,255,255,.7);
+    --primary:#2563eb;
+    
+    }
+    
+    body.dark{
+    
+    --bg:#0d1117;
+    --bg2:#111827;
+    --text:#ffffff;
+    --card:rgba(255,255,255,.05);
+    --border:rgba(255,255,255,.08);
+    --nav:rgba(255,255,255,.05);
+    --primary:#60a5fa;
+    
+    }
+    
+    html{
+    
+    scroll-behavior:smooth;
+    
+    }
+    
+      *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Poppins,sans-serif;
+      }
+      
+      body{
+    
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+    transition:.35s background,.35s color;
+    padding-top:90px;
+    }
+     
+     ::selection{
+    
+    background:#60a5fa;
+    
+    color:white;
+    
+    }
+  
+     
+    .card,
+    nav,
+    .btn,
+    .stat-card{
+    
+    transition:.35s;
+    
+    }
+      body::before{
+      
+      content:"";
+      position:fixed;
+      width:600px;
+      height:600px;
+      background:#4f46e5;
+      border-radius:50%;
+      filter:blur(180px);
+      top:-250px;
+      left:-150px;
+      opacity:.45;
+      
+      }
+      
+      body::after{
+      
+      content:"";
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#06b6d4;
+      border-radius:50%;
+      filter:blur(180px);
+      bottom:-200px;
+      right:-120px;
+      opacity:.35;
+      
+      }
+      
+      nav{
+    
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    
+    padding:22px 7%;
+    backdrop-filter:blur(18px);
+    
+    border-bottom:1px solid var(--border);
+    
+    transition:
+    padding .35s ease,
+    background .35s ease,
+    backdrop-filter .35s ease,
+    box-shadow .35s ease;
+    -webkit-backdrop-filter:blur(18px);
+    z-index:9999;
+    
+    }
+    
+    nav.scrolled{
+    
+    padding:12px 7%;
+    
+    
+    backdrop-filter:blur(28px);
+    
+    box-shadow:
+    0 8px 30px rgba(0,0,0,.18);
+    
+    }
+    
+    nav ul{
+
+display:flex;
+align-items:center;
+
+gap:28px;
+
+list-style:none;
+
+}
+
+      .logo{
+      
+      font-size:28px;
+      font-weight:700;
+      cursor:pointer;
+      
+      }
+      nav.scrolled .logo{
+
+font-size:24px;
+
+transform:scale(.95);
+
+}
+      
+      .logo span{
+    
+    color:var(--primary);
+    
+    }
+ 
+
+.logo:hover{
+
+transform:scale(1.05);
+
+}
+      
+      
+      
+      nav a{
+
+position:relative;
+
+text-decoration:none;
+
+color:var(--text);
+
+font-weight:500;
+
+transition:.3s;
+
+}
+
+nav a::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+bottom:-6px;
+
+width:0%;
+height:2px;
+
+background:var(--primary);
+
+transition:.3s;
+
+border-radius:50px;
+
+}
+
+nav a:hover::after{
+
+width:100%;
+
+}
+      
+      nav a:hover{
+      
+      color:#60a5fa;
+      
+      }
+      
+      .hero{
+      
+      min-height:calc(100vh - 72px);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      text-align:center;
+      padding:40px;
+      
+      }
+      
+      .hero h1{
+    
+    font-size:clamp(3rem,7vw,5.5rem);
+    
+    }
+      
+      .hero span{
+      
+      color:#60a5fa;
+      
+      }
+      
+      .hero p{
+      
+      margin-top:20px;
+      max-width:750px;
+      line-height:1.8;
+      opacity:.85;
+      
+      }
+      
+      .btn{
+    
+    margin-top:35px;
+    padding:16px 35px;
+    background:var(--primary);
+    border-radius:12px;
+    text-decoration:none;
+    color:white;
+    transition:.3s;
+    
+    }
+      
+      .btn:hover{
+      
+      transform:
+    translateY(-3px)
+    scale(1.02);
+      
+      }
+      
+      section{
+      
+      padding:90px 8%;
+      
+      }
+      
+      .title{
+      
+      font-size:40px;
+      margin-bottom:40px;
+      
+      }
+      
+      .grid{
+      
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+      
+      }
+      
+      .card{
+    
+    background:var(--card);
+    border:1px solid var(--border);
+    backdrop-filter:blur(20px);
+    border-radius:18px;
+    padding:30px;
+    transition:.35s;
+    
+    }
+    
+    .card:hover{
+    
+    transform:translateY(-10px);
+    
+    }
+      
+     
+      
+      .card h3{
+      
+      margin-bottom:12px;
+      
+      }
+      
+      .card p{
+      
+      opacity:.75;
+      line-height:1.7;
+      
+      }
+      
+      .footer{
+
+margin-top:120px;
+
+padding:70px 8% 30px;
+
+background:var(--card);
+
+border-top:1px solid var(--border);
+
+backdrop-filter:blur(20px);
+
+}
+
+.footer-container{
+
+display:grid;
+
+grid-template-columns:2fr 3fr;
+
+gap:80px;
+
+}
+
+.footer-brand h2{
+
+font-size:32px;
+
+margin-bottom:18px;
+
+}
+
+.footer-brand span{
+
+color:var(--primary);
+
+}
+
+.footer-brand p{
+
+line-height:1.8;
+
+opacity:.75;
+
+max-width:420px;
+
+}
+
+.footer-social{
+
+display:flex;
+
+gap:14px;
+
+margin-top:28px;
+
+}
+
+.footer-social a{
+
+width:42px;
+
+height:42px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:12px;
+
+text-decoration:none;
+
+background:rgba(127,127,127,.08);
+
+color:var(--text);
+
+transition:.3s;
+
+}
+
+.footer-social a:hover{
+
+background:var(--primary);
+
+color:white;
+
+transform:translateY(-4px);
+
+}
+
+.footer-links{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:40px;
+
+}
+
+.footer-links h3{
+
+margin-bottom:18px;
+
+font-size:18px;
+
+}
+
+.footer-links a{
+
+display:block;
+
+margin:12px 0;
+
+text-decoration:none;
+
+color:var(--text);
+
+opacity:.75;
+
+transition:.3s;
+
+}
+
+.footer-links a:hover{
+
+opacity:1;
+
+color:var(--primary);
+
+padding-left:6px;
+
+}
+
+.footer-bottom{
+
+margin-top:60px;
+
+padding-top:30px;
+
+border-top:1px solid var(--border);
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:20px;
+
+}
+
+.footer-bottom p{
+
+opacity:.7;
+
+}
+
+.footer-bottom a{
+
+text-decoration:none;
+
+color:var(--primary);
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.footer-bottom a:hover{
+
+transform:translateY(-2px);
+
+}
+
+@media(max-width:900px){
+
+.footer-container{
+
+grid-template-columns:1fr;
+
+gap:50px;
+
+}
+
+.footer-links{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+}
+
+@media(max-width:650px){
+
+.footer-links{
+
+grid-template-columns:1fr;
+
+}
+
+.footer-bottom{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+}
+      
+      .card{
+          backdrop-filter:blur(25px);
+          border:1px solid var(--border);
+          background:
+          linear-gradient(
+          145deg,
+          rgba(255,255,255,.08),
+          rgba(255,255,255,.02)
+          );
+      
+          box-shadow:
+          0 0 20px rgba(0,255,255,.15),
+          inset 0 0 25px rgba(255,255,255,.04);
+      
+          transition:.4s;
+      }
+      
+      .card:hover{
+      
+      transform:
+      rotateX(8deg)
+      rotateY(-8deg)
+      translateY(-15px)
+      scale(1.04);
+      
+      box-shadow:
+      0 0 40px cyan,
+      0 0 80px #8b5cf6;
+      
+      }
+      
+      body::before{
+      content:"";
+      position:fixed;
+      width:650px;
+      height:650px;
+      left:50%;
+      top:45%;
+      transform:translate(-50%,-50%);
+      border-radius:50%;
+      background:
+      radial-gradient(circle,
+      rgba(0,255,255,.28),
+      transparent 70%);
+      filter:blur(120px);
+      z-index:-3;
+      pointer-events:none;
+      }
+      
+      
+    .theme-toggle{
+    
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    
+    width:40px;
+    height:40px;
+    
+    padding:0;
+    margin-left:8px;
+    
+    border:none;
+    outline:none;
+    
+    background:var(--card);
+    
+    border:1px solid var(--border);
+    
+    backdrop-filter:blur(15px);
+    color:var(--text);
+    
+    border-radius:10px;
+    
+    cursor:pointer;
+    
+    font-size:18px;
+    
+    transition:
+    background .25s,
+    color .25s,
+    transform .2s;
+    
+    }
+    
+    .theme-toggle:hover{
+    
+    background:rgba(127,127,127,.12);
+    
+    }
+    
+    .theme-toggle:active{
+    
+    transform:scale(.94);
+    
+    }
+    
+    .theme-toggle:focus{
+    
+    outline:none;
+    box-shadow:none;
+    
+    }
+    
+    .theme-toggle svg{
+    
+    width:20px;
+    height:20px;
+    
+    }
+    
+    
+    .command-overlay{
+
+position:fixed;
+inset:0;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(10px);
+
+display:flex;
+
+justify-content:center;
+
+align-items:flex-start;
+
+padding-top:100px;
+
+opacity:0;
+
+visibility:hidden;
+
+transition:.25s;
+
+z-index:99999;
+
+}
+
+.command-overlay.active{
+
+opacity:1;
+
+visibility:visible;
+
+}
+
+.command-box{
+
+width:min(700px,92%);
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+border-radius:18px;
+
+overflow:hidden;
+
+box-shadow:
+
+0 30px 70px rgba(0,0,0,.35);
+
+transform:translateY(-30px);
+
+transition:.25s;
+
+}
+
+.command-overlay.active .command-box{
+
+transform:translateY(0);
+
+}
+
+.command-header{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:18px;
+
+border-bottom:1px solid var(--border);
+
+}
+
+.command-header input{
+
+flex:1;
+
+background:none;
+
+border:none;
+
+outline:none;
+
+font-size:17px;
+
+color:var(--text);
+
+}
+
+.command-header span{
+
+font-size:12px;
+
+padding:4px 8px;
+
+border-radius:6px;
+
+background:rgba(127,127,127,.15);
+
+}
+
+.command-results{
+
+max-height:400px;
+
+overflow-y:auto;
+
+}
+
+.command-item{
+
+padding:15px 20px;
+
+cursor:pointer;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+transition:.2s;
+
+}
+
+.command-item:hover{
+
+background:rgba(127,127,127,.12);
+
+}
+
+.command-item small{
+
+opacity:.6;
+
+}
+
+.hero,
+section,
+footer{
+
+position:relative;
+
+z-index:1;
+
+}
+
+.contact-container{
+
+display:grid;
+
+grid-template-columns:1fr 1.2fr;
+
+gap:60px;
+
+margin-top:60px;
+
+align-items:start;
+
+}
+
+.contact-info h3{
+
+font-size:30px;
+
+margin-bottom:18px;
+
+}
+
+.contact-info p{
+
+line-height:1.9;
+
+opacity:.75;
+
+margin-bottom:35px;
+
+}
+
+.contact-item{
+
+display:flex;
+
+align-items:center;
+
+gap:16px;
+
+margin:22px 0;
+
+font-size:16px;
+
+}
+
+.contact-item i{
+
+width:50px;
+height:50px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:12px;
+
+background:rgba(127,127,127,.08);
+
+color:var(--primary);
+
+font-size:20px;
+
+}
+
+.contact-form{
+
+display:flex;
+
+flex-direction:column;
+
+gap:25px;
+
+}
+
+.input-group{
+
+position:relative;
+
+}
+
+.input-group input,
+.input-group textarea{
+
+width:100%;
+
+padding:18px;
+
+border-radius:14px;
+
+border:1px solid var(--border);
+
+background:var(--card);
+
+backdrop-filter:blur(15px);
+
+color:var(--text);
+
+font-size:15px;
+
+outline:none;
+
+transition:.3s;
+
+resize:vertical;
+
+}
+
+.input-group textarea{
+
+min-height:170px;
+
+}
+
+.input-group label{
+
+position:absolute;
+
+left:18px;
+top:18px;
+
+pointer-events:none;
+
+transition:.25s;
+
+opacity:.65;
+
+background:var(--bg);
+
+padding:0 6px;
+
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+
+border-color:var(--primary);
+
+box-shadow:0 0 25px rgba(37,99,235,.18);
+
+}
+
+.input-group input:focus+label,
+.input-group textarea:focus+label,
+.input-group input:not(:placeholder-shown)+label,
+.input-group textarea:not(:placeholder-shown)+label{
+
+top:-10px;
+
+font-size:12px;
+
+color:var(--primary);
+
+}
+
+.contact-form .btn{
+
+width:fit-content;
+
+margin-top:10px;
+
+}
+@media(max-width:900px){
+
+.contact-container{
+
+grid-template-columns:1fr;
+
+}
+
+.contact-form .btn{
+
+width:100%;
+
+}
+
+}
+      
+      
+      
+      
+      
+      .developer-modal{
+
+position:fixed;
+inset:0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:rgba(0,0,0,.55);
+
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+
+opacity:0;
+visibility:hidden;
+
+transition:.3s;
+
+z-index:100000;
+
+}
+
+.developer-modal.show{
+
+opacity:1;
+visibility:visible;
+
+}
+
+.developer-card{
+
+width:min(460px,92%);
+
+padding:42px;
+
+text-align:center;
+
+border-radius:22px;
+
+background:var(--card);
+
+border:1px solid var(--border);
+
+backdrop-filter:blur(25px);
+
+box-shadow:
+0 25px 80px rgba(0,0,0,.35);
+
+transform:translateY(30px) scale(.95);
+
+transition:.35s;
+
+}
+
+.developer-modal.show .developer-card{
+
+transform:translateY(0) scale(1);
+
+}
+
+.developer-icon{
+
+font-size:64px;
+
+margin-bottom:20px;
+
+animation:rocketFloat 2s ease-in-out infinite;
+
+}
+
+.developer-card h2{
+
+font-size:32px;
+
+margin-bottom:18px;
+
+}
+
+.developer-card p{
+
+line-height:1.8;
+
+opacity:.8;
+
+margin-bottom:35px;
+
+}
+
+.developer-card button{
+
+padding:14px 34px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+background:var(--primary);
+
+color:#fff;
+
+font-size:16px;
+
+transition:.25s;
+
+}
+
+.developer-card button:hover{
+
+transform:translateY(-3px);
+
+}
+
+@keyframes rocketFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+}
+
+    #about{
+    
+    padding:120px 8%;
+    
+    }
+    
+    .section-header{
+    
+    text-align:center;
+    margin-bottom:70px;
+    
+    }
+    
+    .section-tag{
+    
+    color:#00f5ff;
+    letter-spacing:4px;
+    font-size:.8rem;
+    margin-bottom:15px;
+    
+    }
+    
+    .section-header h2{
+    
+    font-size:3rem;
+    font-weight:700;
+    
+    }
+    
+    .about-grid{
+    
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:60px;
+    align-items:center;
+    
+    }
+    
+    .about-text p{
+    
+    line-height:2;
+    font-size:1.05rem;
+    opacity:.8;
+    margin-bottom:25px;
+    
+    }
+    
+    .about-buttons{
+    
+    display:flex;
+    gap:20px;
+    margin-top:35px;
+    
+    }
+    
+    .secondary{
+    
+    background:
+      radial-gradient(square,
+      rgba(0,255,255,.28),
+      transparent 70%);
+    border:1px solid var(--border);
+    
+    }
+    
+    .about-buttons a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    }
+    .stats{
+    
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    
+    }
+    
+    .stat-card{
+    
+    padding:35px;
+    border-radius:20px;
+    
+       background:
+          linear-gradient(
+          145deg,
+          rgba(255,255,255,.08),
+          rgba(255,255,255,.02)
+          );
+    
+    backdrop-filter:blur(25px);
+    
+    border:1px solid rgba(255,255,255,.08);
+    
+    transition:.35s;
+    
+    }
+    
+    .stat-card:hover{
+    
+    transform:translateY(-8px);
+    
+    border-color:#00f5ff;
+    
+    box-shadow:0 0 35px rgba(0,245,255,.25);
+    
+    }
+    
+    .stat-card h3{
+    
+    font-size:2.5rem;
+    
+    color:#00f5ff;
+    
+    margin-bottom:10px;
+    
+    }
+    
+    .stat-card span{
+    
+    opacity:.7;
+    
+    }
+    
+    @media(max-width:900px){
+    
+    .about-grid{
+    
+    grid-template-columns:1fr;
+    
+    }
+    
+    .stats{
+    
+    grid-template-columns:1fr 1fr;
+    
+    }
+    
+    }
+    
+    @media(max-width:600px){
+    
+    .stats{
+    
+    grid-template-columns:1fr;
+    
+    }
+    
+    .section-header h2{
+    
+    font-size:2rem;
+    
+    }
+    
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <nav>
+
+    <div class="logo">
+      Ayan<span>Studio</span>
+    </div>
+
+    <ul>
+
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">AI</a></li>
+      <li><a href="#">Games</a></li>
+      <li><a href="#about">About</a></li>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+        <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        </svg>
+      </button>
+    <button class="theme-toggle" id="openSearch" aria-label="Search">
+
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="2"
+stroke-linecap="round"
+stroke-linejoin="round">
+
+<circle cx="11" cy="11" r="7"></circle>
+
+<path d="M21 21l-4.3-4.3"></path>
+
+</svg>
+
+</button>
+    </ul>
+
+  </nav>
+
+  <section class="hero" id="hero">
+
+    <h1>Welcome to <span>Ayan Studio</span></h1>
+
+    <p>
+
+      Building AI tools, browser games, utilities and modern web experiences.
+
+    </p>
+
+    <a class="btn" href="#projects">
+      Explore Projects
+    </a>
+
+  </section>
+
+  <section id="projects">
+
+    <h2 class="title">
+      Projects
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>AI Ecosystem Simulator</h3>
+
+        <p>
+          A living world simulation where creatures evolve, survive and interact.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Puzzle Haven</h3>
+
+        <p>
+          Modern browser jigsaw puzzle game with multiple difficulty levels.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>HTML Viewer</h3>
+
+        <p>
+          Write and preview HTML instantly inside your browser.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Online Notepad</h3>
+
+        <p>
+          Fast local note-taking app with folders and autosave.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Image Converter</h3>
+
+        <p>
+          Convert images between popular formats quickly.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Story Writing App</h3>
+
+        <p>
+          Create stories, chapters and organize your novels.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>CampusAnon</h3>
+
+        <p>
+          Anonymous student social platform.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>ForgeTales</h3>
+
+        <p>
+          Interactive storytelling platform for creators.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>UniversalConvert</h3>
+
+        <p>
+          Universal conversion tool for many file and data formats.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="about">
+
+    <div class="section-header">
+      <p class="section-tag">WHO WE ARE</p>
+      <h2>Building the Future, One Project at a Time.</h2>
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-text">
+
+        <p>
+          Ayan Studio is an independent software studio focused on creating
+          modern web experiences, AI-powered tools, browser games, and
+          experimental digital projects.
+        </p>
+
+        <p>
+          Every project is designed with a focus on performance,
+          clean interfaces, creativity, and innovation. From utilities
+          used every day to ambitious simulations and interactive games,
+          Ayan Studio aims to build software that is both useful and
+          enjoyable.
+        </p>
+
+        <div class="about-buttons">
+          <a href="#projects" class="btn">Explore Projects</a>
+          <a href="#contact" class="btn secondary">Contact</a>
+        </div>
+
+      </div>
+
+      <div class="stats">
+
+        <div class="stat-card">
+          <h3>10+</h3>
+          <span>Projects</span>
+        </div>
+
+        <div class="stat-card">
+          <h3>AI</h3>
+          <span>Innovation</span>
+        </div>
+
+        <div class="stat-card">
+          <h3>Games</h3>
+          <span>Interactive Experiences</span>
+        </div>
+
+        <div class="stat-card">
+          <h3>∞</h3>
+          <span>Ideas</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="contact">
+
+<div class="section-header">
+
+<p class="section-tag">
+GET IN TOUCH
+</p>
+
+<h2>
+Let's Build Something Amazing
+</h2>
+
+</div>
+
+<div class="contact-container">
+
+<div class="contact-info">
+
+<h3>
+Contact Ayan Studio
+</h3>
+
+<p>
+
+Have an idea, collaboration, project or just want to say hello?<br>
+Feel free to get in touch.
+
+</p>
+
+<div class="contact-item">
+
+<i class="fa-solid fa-envelope"></i>
+
+<span>
+hello@ayanstudio.net
+</span>
+
+</div>
+
+<div class="contact-item">
+
+<i class="fa-solid fa-globe"></i>
+
+<span>
+ayanstudio.net
+</span>
+
+</div>
+
+<div class="contact-item">
+
+<i class="fa-brands fa-github"></i>
+
+<span>
+GitHub (Coming Soon)
+</span>
+
+</div>
+
+<div class="contact-item">
+
+<i class="fa-brands fa-youtube"></i>
+
+<span>
+YouTube (Coming Soon)
+</span>
+
+</div>
+
+</div>
+
+<form class="contact-form">
+
+<div class="input-group">
+
+<input
+type="text"
+placeholder=" "
+required>
+
+<label>
+Full Name
+</label>
+
+</div>
+
+<div class="input-group">
+
+<input
+type="email"
+placeholder=" "
+required>
+
+<label>
+Email Address
+</label>
+
+</div>
+
+<div class="input-group">
+
+<input
+type="text"
+placeholder=" ">
+
+<label>
+Subject
+</label>
+
+</div>
+
+<div class="input-group">
+
+<textarea
+rows="6"
+placeholder=" "
+required></textarea>
+
+<label>
+Your Message
+</label>
+
+</div>
+
+<button class="btn">
+
+Send Message
+
+</button>
+
+</form>
+
+</div>
+
+</section>>
+
+ <footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <h2>Ayan<span>Studio</span></h2>
+
+            <p>
+                Building AI tools, browser games, modern websites,
+                utilities and creative digital experiences.
+            </p>
+
+            <div class="footer-social">
+
+                <a href="#" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <a href="#" title="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+                <a href="#" title="Discord">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+
+                <a href="#" title="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-links">
+
+            <div>
+
+                <h3>Explore</h3>
+
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+            <div>
+
+                <h3>Projects</h3>
+
+                <a href="#">Puzzle Haven</a>
+                <a href="#">AI Ecosystem</a>
+                <a href="#">HTML Viewer</a>
+                <a href="#">Online Notepad</a>
+
+            </div>
+
+            <div>
+
+                <h3>Resources</h3>
+
+                <a href="#">Downloads</a>
+                <a href="#">Blog</a>
+                <a href="#">Roadmap</a>
+                <a href="#">Privacy</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Ayan Studio. Built with ❤️ using HTML, CSS & JavaScript.
+        </p>
+
+        <a href="#hero" id="backToTop">
+            ↑ Back to Top
+        </a>
+
+    </div>
+
+</footer>
+
+
+  <script type="module">
+    import * as THREE from "https://unpkg.com/three@0.167.1/build/three.module.js";
+
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+      60,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+
+    camera.position.z = 4;
+
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true
+    });
+
+    renderer.setPixelRatio(1);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    renderer.domElement.style.position = "fixed";
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left = "0";
+    renderer.domElement.style.width = "100%";
+    renderer.domElement.style.height = "100%";
+    renderer.domElement.style.zIndex = "-2";
+    renderer.domElement.style.pointerEvents = "none";
+
+    document.body.appendChild(renderer.domElement);
+
+    // Environment Light
+
+    scene.add(new THREE.AmbientLight(0xffffff, 2));
+
+    const light = new THREE.PointLight(0x66ffff, 18, 100);
+    light.position.set(3, 4, 5);
+    scene.add(light);
+
+    const light2 = new THREE.PointLight(0xff00ff, 10, 100);
+    light2.position.set(-5, -3, 5);
+    scene.add(light2);
+
+    // Sphere
+
+    const geometry = new THREE.TorusKnotGeometry(
+      0.8,
+      0.22,
+      512,
+      32
+    );
+
+    const material = new THREE.MeshPhysicalMaterial({
+
+      color: 0x00ffff,
+
+      transmission: 1,
+
+      transparent: true,
+
+      opacity: .8,
+
+      roughness: 0,
+
+      metalness: .25,
+
+      thickness: 1.5,
+
+      clearcoat: 1,
+
+      clearcoatRoughness: 0,
+
+      reflectivity: 1,
+
+      ior: 1.5
+
+    });
+
+    const sphere = new THREE.Mesh(
+      geometry,
+      material
+    );
+
+    scene.add(sphere);
+
+    // Particles
+
+    const particleGeometry = new THREE.BufferGeometry();
+
+    const particles = 600;
+
+    const positions = new Float32Array(
+      particles * 3
+    );
+
+    for (let i = 0; i < particles; i++) {
+
+      positions[i * 3] = (Math.random() - .5) * 20;
+      positions[i * 3 + 1] = (Math.random() - .5) * 20;
+      positions[i * 3 + 2] = (Math.random() - .5) * 20;
+
+    }
+
+    particleGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3)
+    );
+
+    const particleMaterial = new THREE.PointsMaterial({
+
+      size: .03,
+
+      color: 0x00ffff,
+
+      transparent: true,
+
+      opacity: .85
+
+    });
+
+    const stars = new THREE.Points(
+      particleGeometry,
+      particleMaterial
+    );
+
+    scene.add(stars);
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    window.addEventListener("mousemove", e => {
+
+      mouseX = (e.clientX / window.innerWidth - .5) * 1.5;
+      mouseY = (e.clientY / window.innerHeight - .5) * 1.5;
+
+    });
+
+    function animate() {
+
+      requestAnimationFrame(animate);
+
+      sphere.rotation.x += 0.002;
+      sphere.rotation.y += 0.003;
+
+      sphere.position.y = Math.sin(Date.now() * 0.001) * 0.15;
+
+      sphere.rotation.x += mouseY * 0.01;
+      sphere.rotation.y += mouseX * 0.01;
+
+      stars.rotation.y += 0.0005;
+
+      camera.position.x += (mouseX - camera.position.x) * 0.03;
+      camera.position.y += (-mouseY - camera.position.y) * 0.03;
+
+      camera.lookAt(scene.position);
+
+      renderer.render(scene, camera);
+
+    }
+
+    animate();
+
+    window.addEventListener("resize", () => {
+
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(
+        window.innerWidth,
+        window.innerHeight
+      );
+
+    });
+  </script>
+
+<script>
+
+const navbar=document.querySelector("nav");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>40){
+
+navbar.classList.add("scrolled");
+
+}else{
+
+navbar.classList.remove("scrolled");
+
+}
+
+});
+
+</script>
+<script>
+    const trigger = 80;
+
+window.addEventListener("scroll", () => {
+    navbar.classList.toggle("scrolled", window.scrollY > trigger);
+});
+</script>
+  <script>
+    const button = document.getElementById("theme-toggle");
+    const icon = document.getElementById("theme-icon");
+
+    // Restore saved theme
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+    }
+
+    function updateTheme() {
+      const dark = document.body.classList.contains("dark");
+
+      if (dark) {
+        icon.innerHTML = `
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        `;
+      } else {
+        icon.innerHTML = `
+            <path d="M21 12.79A9 9 0 1111.21 3A7 7 0 0021 12.79z"/>
+        `;
+      }
+    }
+
+    updateTheme();
+
+    button.addEventListener("click", () => {
+
+      document.body.classList.toggle("dark");
+
+      localStorage.setItem(
+        "theme",
+        document.body.classList.contains("dark") ? "dark" : "light"
+      );
+
+      updateTheme();
+
+    });
+  </script>
+
+<!-- Command Palette -->
+<div class="command-overlay" id="commandOverlay">
+
+    <div class="command-box">
+
+        <div class="command-header">
+
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+
+            </svg>
+
+            <input
+                id="commandInput"
+                type="text"
+                placeholder="Search projects, pages..."
+                autocomplete="off"
+            >
+
+            <span>ESC</span>
+
+        </div>
+
+        <div class="command-results" id="commandResults">
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+
+const overlay=document.getElementById("commandOverlay");
+const input=document.getElementById("commandInput");
+const results=document.getElementById("commandResults");
+
+const pages=[
+
+{
+name:"Home",
+url:"#"
+},
+
+{
+name:"Projects",
+url:"#projects"
+},
+
+{
+name:"About",
+url:"#about"
+},
+
+{
+name:"Contact",
+url:"#contact"
+},
+
+{
+name:"AI Ecosystem Simulator",
+url:"#projects"
+},
+
+{
+name:"Puzzle Haven",
+url:"#projects"
+},
+
+{
+name:"HTML Viewer",
+url:"#projects"
+},
+
+{
+name:"Online Notepad",
+url:"#projects"
+},
+
+{
+name:"Image Converter",
+url:"#projects"
+}
+
+];
+
+function render(list){
+
+results.innerHTML="";
+
+list.forEach(item=>{
+
+const div=document.createElement("div");
+
+div.className="command-item";
+
+div.innerHTML=`
+<div>${item.name}</div>
+<small>${item.url}</small>
+`;
+
+div.onclick=()=>{
+
+window.location=item.url;
+
+closePalette();
+
+};
+
+results.appendChild(div);
+
+});
+
+}
+
+render(pages);
+
+function openPalette(){
+
+overlay.classList.add("active");
+
+input.value="";
+
+render(pages);
+
+setTimeout(()=>input.focus(),100);
+
+}
+
+function closePalette(){
+
+overlay.classList.remove("active");
+
+}
+
+document.addEventListener("keydown",e=>{
+
+if(e.ctrlKey&&e.key.toLowerCase()=="k"){
+
+e.preventDefault();
+
+openPalette();
+
+}
+
+if(e.key==="Escape"){
+
+closePalette();
+
+}
+
+});
+
+overlay.addEventListener("click",e=>{
+
+if(e.target===overlay){
+
+closePalette();
+
+}
+
+});
+
+input.addEventListener("input",()=>{
+
+const value=input.value.toLowerCase();
+
+const filtered=pages.filter(p=>
+
+p.name.toLowerCase().includes(value)
+
+);
+
+render(filtered);
+
+});
+
+document
+.getElementById("openSearch")
+.onclick=openPalette;
+
+document
+.getElementById("backToTop")
+.addEventListener("click",function(e){
+
+e.preventDefault();
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+});
+</script>
+
+
+<!-- Developer Mode Popup -->
+<div class="developer-modal" id="developerModal">
+
+    <div class="developer-card">
+
+        <div class="developer-icon">
+            🚀
+        </div>
+
+        <h2>Developer Mode</h2>
+
+        <p id="developerMessage">
+            Curiosity unlocks innovation.
+        </p>
+
+        <button id="developerClose">
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+const konamiCode=[
+
+"ArrowUp",
+"ArrowUp",
+
+"ArrowDown",
+"ArrowDown",
+
+"ArrowLeft",
+"ArrowRight",
+
+"ArrowLeft",
+"ArrowRight"
+
+];
+
+let konamiIndex=0;
+
+const developerMessages=[
+
+"Curiosity unlocks innovation.",
+
+"Dream. Build. Repeat.",
+
+"Welcome, Developer.",
+
+"Nothing is impossible.",
+
+"Keep creating.",
+
+"The best features are hidden.",
+
+"You've unlocked Developer Mode.",
+
+"Thanks for exploring Ayan Studio."
+
+];
+
+const developerModal=document.getElementById("developerModal");
+const developerMessage=document.getElementById("developerMessage");
+const developerClose=document.getElementById("developerClose");
+
+document.addEventListener("keydown",(e)=>{
+
+// Ignore typing inside form fields
+if(
+e.target.tagName==="INPUT" ||
+e.target.tagName==="TEXTAREA"
+){
+return;
+}
+
+if(e.key===konamiCode[konamiIndex]){
+
+konamiIndex++;
+
+if(konamiIndex===konamiCode.length){
+
+konamiIndex=0;
+
+unlockDeveloperMode();
+
+}
+
+}else{
+
+konamiIndex=
+e.key===konamiCode[0] ? 1 : 0;
+
+}
+
+});
+
+function unlockDeveloperMode(){
+
+// Don't reopen if already open
+if(developerModal.classList.contains("show")){
+return;
+}
+
+const randomMessage=
+developerMessages[
+Math.floor(Math.random()*developerMessages.length)
+];
+
+developerMessage.textContent=randomMessage;
+
+developerModal.classList.add("show");
+localStorage.setItem("developerMode","true");
+document.body.style.overflow="hidden";
+
+}
+
+function closeDeveloperMode(){
+
+developerModal.classList.remove("show");
+
+}
+
+developerClose.addEventListener("click",closeDeveloperMode);
+
+// Close when clicking outside the popup
+developerModal.addEventListener("click",(e)=>{
+
+if(e.target===developerModal){
+
+closeDeveloperMode();
+document.body.style.overflow="";
+}
+if(e.key==="Escape"){
+
+closeDeveloperMode();
+
+}
+});
+document.addEventListener("keydown",(e)=>{
+
+if(e.key==="Escape"){
+
+closeDeveloperMode();
+
+}
+
+});
+</script>
+</body>
+
+</html>
